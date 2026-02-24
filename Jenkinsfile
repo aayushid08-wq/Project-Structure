@@ -19,7 +19,7 @@ pipeline {
 
         stage('test') {
             steps {
-                withSonarQubeEnv(installationName: 'SonarQube' , credentialsId: 'sonar') {
+                withSonarQubeEnv(installationName: 'SonarQube' , credentialsId: 'running-test') {
                 sh '''
                 cd backend
                 mvn clean verify -DskipTests sonar:sonar /
