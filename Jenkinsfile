@@ -16,5 +16,16 @@ pipeline {
                 '''
             }
         }
+
+        stage('test') {
+            steps {
+                withSonarQubeEnv(installationName: 'SonarQube' , credentialsId: 'sonar') {
+                sh '''
+                mvn clean verify -DskipTests sonar:sonar   -Dsonar.projectKey=testing
+                                                           -Dsonar.projectName='testing'
+                '''
+                }
+            }
+        }
     }
 }
