@@ -21,6 +21,7 @@ pipeline {
             steps {
                 withSonarQubeEnv(installationName: 'SonarQube' , credentialsId: 'sonar') {
                 sh '''
+                cd backend
                 mvn clean verify -DskipTests sonar:sonar   -Dsonar.projectKey=testing
                                                            -Dsonar.projectName='testing'
                 '''
